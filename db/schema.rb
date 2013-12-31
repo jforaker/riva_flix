@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20131231215439) do
     t.text     "description"
     t.integer  "movie_id"
     t.string   "poster"
-    t.integer  "critics_score",  limit: 255
-    t.integer  "audience_score", limit: 255
+    t.integer  "critics_score"
+    t.integer  "audience_score"
     t.string   "movie_reviews"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20131231215439) do
     t.text     "description"
     t.integer  "movie_id"
     t.string   "poster"
-    t.integer  "critics_score",  limit: 255
-    t.integer  "audience_score", limit: 255
+    t.integer  "critics_score"
+    t.integer  "audience_score"
     t.string   "movie_reviews"
     t.datetime "created_at"
     t.datetime "updated_at"
