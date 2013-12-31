@@ -16,7 +16,11 @@ jQuery(function ($) {
         releaseSwing: 1,
         startAt: 10,
         scrollBar: $dvd.find('.scrollbar'),
-        scrollBy: 1,
+
+        // Scrolling
+        scrollSource: null, // Element for catching the mouse wheel scrolling. Default is FRAME.
+        scrollBy:     0,
+
         pagesBar: $dvd.find('.pages'),
         activatePageOn: 'click',
         speed: 300,
@@ -70,8 +74,9 @@ jQuery(function ($) {
         releaseSwing: 1,
         startAt: 10,
         scrollBar: $new.find('.scrollbar'),
-        scrollBy: 1,
-        pagesBar: $new.find('.pages'),
+// Scrolling
+        scrollSource: null, // Element for catching the mouse wheel scrolling. Default is FRAME.
+        scrollBy:     0,           pagesBar: $new.find('.pages'),
         activatePageOn: 'click',
         speed: 300,
         moveBy: 600,
@@ -123,7 +128,9 @@ jQuery(function ($) {
         releaseSwing: 1,
         startAt: 10,
         scrollBar: $upcoming.find('.scrollbar'),
-        scrollBy: 1,
+// Scrolling
+        scrollSource: null, // Element for catching the mouse wheel scrolling. Default is FRAME.
+        scrollBy:     0,
         pagesBar: $upcoming.find('.pages'),
         activatePageOn: 'click',
         speed: 300,
