@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <div class="container">
+    <h3>Welcome to RivaFlix</h3>
+    <% if user_signed_in? %>
+        <h5><%= link_to "My watch list", watches_path %></h5>
+    <% end %>
+    <%= render 'search' %>
+  </div>
+</div>
+
+
+<%= render 'current_dvd_releases' %>
+
+<%= render 'new_dvd_releases' %>
+
+<%= render 'upcoming_dvd_releases' %>

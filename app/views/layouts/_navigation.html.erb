@@ -1,15 +1,23 @@
-<%= link_to "Home", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    Logged in as <%= current_user.name %>
-    </li>
-    <li>
-    <%= link_to 'Logout', signout_path %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to 'Login', signin_path %>
-    </li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-collapse collapse navbar-collapse-01">
+      <ul class="nav navbar-nav navbar-left">
+
+        <li><%= link_to "RivaFlix", root_path, :class => "navbar-brand"  %></li>
+
+        <% if user_signed_in? %>
+            <li>  <%= link_to "My watch list :: #{ @watches.count.to_s }", watches_path, :class => "navbar-brand" %> </li>
+            <li>
+              <%= link_to 'Logout', signout_path %>
+            </li>
+        <% else %>
+            <li>
+              <%= link_to 'Login', signin_path %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
 
+  before_filter :get_watches
+
+  protected
+
+  def get_watches
+    @watches = Watch.all
+  end
+
   private
     def current_user
       begin

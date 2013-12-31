@@ -1,0 +1,185 @@
+/* Header style */
+
+header {
+  &.projecttitle {
+    margin: 0 auto;
+    padding: 115px 0 80px;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+    background-color: #3e404a;
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, transparent 100px);
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, transparent 100px);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, transparent 100px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px, 100% 100%;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px, center bottom;
+  }
+  .projectname {
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+.download {
+  margin-top: -45px;
+}
+
+/* Header example */
+
+$pink : #ffabe4;
+
+.example {
+  margin: 80px auto 40px;
+
+  .forward, .backward {
+    float: left;
+    width: 100px;
+    height: 200px;
+    font-size: 60px;
+  }
+  .forward {
+    float: right;
+  }
+  .frame {
+    margin: 0 auto;
+    width: 940px;
+    height: 310px;
+    line-height: 200px;
+    overflow: hidden;
+    text-shadow: none;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-size: 50px;
+      li {
+        float: left;
+        width: 190px;
+        height: 100%;
+        margin: 0 1px 0 0;
+        padding: 0;
+        background: #BDC3C7;
+        color: #3a3c47;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        p{
+          margin: 0 !important;
+          font-weight: 700;
+          -webkit-font-smoothing: antialiased;
+          &.red{
+            color: #E74C3C !important;
+          }
+          &.green{
+            color: #27AE60 !important;
+          }
+        }
+        &.active {
+          color: white;
+          background: #34495E;
+        }
+      }
+    }
+  }
+  .scrollbar {
+    margin: 0 auto 30px;
+    width: 940px;
+    height: 2px;
+    line-height: 0;
+    .handle {
+      width: 100px;
+      height: 100%;
+      background: #ffbe96;
+      cursor: pointer;
+      .mousearea {
+        position: absolute;
+        top: -9px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+    }
+  }
+  .pages {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+    li {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 0 4px;
+      text-indent: -999px;
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      background: #ffbe96;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+      &:hover {
+        background: #aaa;
+      }
+      &.active {
+        background: #34495E;
+      }
+    }
+  }
+  .controls {
+    margin: 50px 0 0;
+    text-align: center;
+    .divider {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    //button {
+    //  line-height: 32px;
+    //  vertical-align: middle;
+    //  font-family: Novecento, sans-serif;
+    //  i {
+    //    position: relative;
+    //    top: -2px;
+    //    margin: 5px;
+    //    padding: 0;
+    //    font-size: 32px;
+    //    vertical-align: middle;
+    //  }
+    //}
+  }
+}
+
+/* Effects */
+.effects {
+  height: 200px;
+  line-height: 200px;
+  -webkit-perspective: 800px;
+  -ms-perspective: 800px;
+  perspective: 800px;
+  -webkit-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  overflow-y: show;
+}
+.effects ul {
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.effects ul li {
+  position: relative;
+  margin: 0 -20px;
+  -webkit-transform: rotateY(60deg) scale(0.9);
+  -ms-transform: rotateY(60deg) scale(0.9);
+  transform: rotateY(60deg) scale(0.9);
+  -webkit-transition: -webkit-transform 300ms ease-out;
+  transition: transform 300ms ease-out;
+}
+.effects ul li.active {
+  z-index: 10;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.effects ul li.active ~ li {
+  -webkit-transform: rotateY(-60deg) scale(0.9);
+  -ms-transform: rotateY(-60deg) scale(0.9);
+  transform: rotateY(-60deg) scale(0.9);
+}

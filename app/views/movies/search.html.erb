@@ -1,0 +1,77 @@
+<!--search results-->
+<div class="row">
+  <div class="jumbotron" >
+    <% @results.each do |movie| %>
+
+        <div class="container">
+          <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
+
+          <h3 style="display: inline-block"><%= movie.name %></h3>
+          <div class="tile" style="display: inline-block">
+            <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
+              Critics: <%= movie.scores.critics_score %></p>
+            <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
+              Audience: <%= movie.scores.audience_score %></p>
+          </div>
+          <br><br>
+
+          <blockquote>
+            <% if movie.synopsis != '' %>
+                <small>Description: </small>
+                <p><%= movie.synopsis %></p>
+            <% end %>
+          </blockquote>
+
+          <blockquote>
+          <% if movie.reviews != '' && movie.reviews != [] %>
+              <h5>Review from <%= movie.reviews[0].publication %>:</h5>
+              <p><%= movie.reviews[0].quote  %></p>
+          <% end %>
+          </blockquote>
+
+          <%= button_to "add to watch list", {:controller => :watches,
+                                              :action => 'create',
+                                              :movie_id => movie.id,
+                                              :description => movie.synopsis,
+                                              :title => movie.name,
+                                              :poster => movie.posters.profile,
+                                              :critics_score => movie.scores.critics_score,
+                                              :audience_score => movie.scores.audience_score
+          },
+                        :class => "btn btn-primary btn-sm"
+          %>
+        </div>
+    <% end %>
+  </div>
+
+  <!--similar results-->
+  <blockquote>
+    <h4>Similar movies </h4>
+  </blockquote>
+
+  <div class="mason" >
+    <% @similars.each do |movie| %>
+        <div class="tile tiler">
+          <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
+          <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
+            Critics: <%= movie.scores.critics_score %></p>
+          <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
+            Audience: <%= movie.scores.audience_score %></p>
+          <p><%= movie.synopsis %></p>
+          <div class="tile">
+            <%= button_to "add to watch list", {:controller => :watches,
+                                                :action => 'create',
+                                                :movie_id => movie.id,
+                                                :description => movie.synopsis,
+                                                :title => movie.name,
+                                                :poster => movie.posters.profile,
+                                                :critics_score => movie.scores.critics_score,
+                                                :audience_score => movie.scores.audience_score
+            },
+                          :class => "btn btn-primary btn-sm" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+</div>
