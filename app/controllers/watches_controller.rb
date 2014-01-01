@@ -1,6 +1,6 @@
 class WatchesController < ApplicationController
   def index
-    @watches = Watch.all
+    @watches = current_user.watches
   end
 
   def create
@@ -13,7 +13,8 @@ class WatchesController < ApplicationController
       params[:poster] = @movie.poster
       params[:critics_score] = @movie.critics_score
       params[:audience_score] = @movie.audience_score
-      new_watch_movie = params.permit(:movie_id, :description, :title, :poster, :critics_score, :audience_score)
+      params[:user_id] =  current_user.id
+      new_watch_movie = params.permit(:user_id, :movie_id, :description, :title, :poster, :critics_score, :audience_score)
       save new_watch_movie
 
     else
@@ -22,7 +23,9 @@ class WatchesController < ApplicationController
   end
 
   def save pars
-    @watch = Watch.new(pars)
+    #@watch = Watch.new(pars)
+    @watch = current_user.watches.build(pars)
+
     if @watch.save
 
       redirect_to watches_path, :notice => "Watch created!"

@@ -1,8 +1,8 @@
 /*global Sly */
 
 
-jQuery(function ($) {
-
+$(document).ready(function(){
+    //current
     var $dvd = $('#current');
     var $frame = $dvd.find('.frame'); window.frr = $frame;
     var sly = new Sly($frame, {
@@ -54,13 +54,9 @@ jQuery(function ($) {
                 sly[action]();
         }
     });
-});
-
-/*global Sly */
 
 
-jQuery(function ($) {
-
+    //new
     var $new = $('#new');
     var $newframe = $new.find('.frame'); window.nfrr = $newframe;
     var newsly = new Sly($newframe, {
@@ -109,11 +105,9 @@ jQuery(function ($) {
                 newsly[action]();
         }
     });
-});
 
 
-
-jQuery(function ($) {
+    //upcoming
 
     var $upcoming = $('#upcoming');
     var $newframe = $upcoming.find('.frame'); window.nfrr = $newframe;
@@ -164,4 +158,6 @@ jQuery(function ($) {
                 newsly[action]();
         }
     });
+
 });
+

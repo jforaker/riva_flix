@@ -8,10 +8,10 @@
         <% @watches.each do |item| %>
             <li class="span5 clearfix">
               <div class="something">
-                <img src="<%= item.poster %>" alt="poster" class="pull-left span2 clearfix" style='margin-right:10px'>
+                <a href="/movies/<%= item.movie_id %>" ><img src="<%= item.poster %>" alt="poster" class="pull-left span2 clearfix" style='margin-right:10px'></a>
                 <div class="caption" class="pull-left">
                   <h4>
-                    <a href="#" ><%= item.title %></a>
+                    <a href="/movies/<%= item.movie_id %>" ><%= item.title %></a>
                   </h4>
                   <p class="<% if item.critics_score.to_i > 50 %> red <% else %> green <% end %>">
                     Critics: <%= item.critics_score %></p>
