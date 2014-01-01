@@ -22,13 +22,6 @@
             <% end %>
           </blockquote>
 
-          <blockquote>
-          <% if movie.reviews != '' && movie.reviews != [] %>
-              <h5>Review from <%= movie.reviews[0].publication %>:</h5>
-              <p><%= movie.reviews[0].quote  %></p>
-          <% end %>
-          </blockquote>
-
           <%= button_to "add to watch list", {:controller => :watches,
                                               :action => 'create',
                                               :movie_id => movie.id,
