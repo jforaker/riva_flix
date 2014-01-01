@@ -13,9 +13,9 @@
                   <h4>
                     <a href="#" ><%= item.title %></a>
                   </h4>
-                  <p class="<% if item.critics_score > 50 %> red <% else %> green <% end %>">
+                  <p class="<% if item.critics_score.to_i > 50 %> red <% else %> green <% end %>">
                     Critics: <%= item.critics_score %></p>
-                  <p class="<% if item.audience_score > 50 %> red <% else %> green <% end %>">
+                  <p class="<% if item.audience_score.to_i > 50 %> red <% else %> green <% end %>">
                     Audience: <%= item.audience_score %></p>
 
 
