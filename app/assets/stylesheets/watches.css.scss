@@ -1,3 +1,101 @@
-// Place all the styles related to the watches controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.masonry {
+  background: #EEE;
+  width: 97% !important;
+  margin: 20px;
+  padding: 20px;
+}
+
+/* clearfix */
+.masonry:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.masonry{
+
+  .item {
+    opacity: 0;
+    width:  372px;
+    height: auto;
+    float: left;
+    margin-bottom: 10px;
+    display: inline-block;
+    background: #FEFEFE;
+    //border: 2px solid #34495E;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 2px 15px;
+    column-break-inside: avoid;
+    padding: 15px;
+    background: linear-gradient(45deg, #FFF, #F9F9F9);
+
+    img {
+      width: 265px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.item.masoner{
+  -webkit-transition-property: left, right, top;
+  -moz-transition-property: left, right, top;
+  -o-transition-property: left, right, top;
+  transition-property:  left, right, top;
+
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+
+.youtube{
+  margin-top: 20px;
+  width:  100%;
+  height: auto;
+  float: left;
+  margin-bottom: 10px;
+  display: inline-block;
+  background: #FEFEFE;
+  //border: 2px solid #34495E;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 20px 0px 0px;
+  -webkit-column-break-inside: avoid;
+  padding: 15px;
+  background: linear-gradient(45deg, #FFF, #F9F9F9);
+
+  .item{
+    height: 480px;
+
+    .player{
+      margin: 0 auto;
+      width: 605px;
+    }
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+HR{
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}

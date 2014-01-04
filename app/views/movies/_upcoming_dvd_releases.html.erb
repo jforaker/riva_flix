@@ -1,41 +1,24 @@
 
-<div class="row">
-  <div class="col-md-11">
-    <h4>Upcoming DVD releases</h4>
+<h4>Upcoming DVD releases</h4>
 
-    <div id="upcoming" class="example pagespan">
-      <div class="scrollbar">
-        <div class="handle">
-          <div class="mousearea"></div>
-        </div>
+<div class="masonry">
+
+  <% @upcoming_dvds.each do |movie| %>
+      <div class="item masoner">
+        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
+        <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-inverse btn-block" %>
+        <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
+          Critics: <%= movie.scores.critics_score %></p>
+        <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
+          Audience: <%= movie.scores.audience_score %></p>
+
+        <p class="desc"><%= movie.synopsis %></p>
+
       </div>
 
-      <div class="frame effects" id="dvd-effects">
-        <ul>
-          <% @upcoming_dvds.each do |movie| %>
-              <li>
-                <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
-                <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-inverse btn-block" %>
-                <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
-                  Critics: <%= movie.scores.critics_score %></p>
-                <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
-                  Audience: <%= movie.scores.audience_score %></p>
-              </li>
-
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="controls">
-        <button class="btn" data-action="toStart"><i class="icon-double-angle-left"></i> Start</button>
-        <span class="divider"></span>
-        <button class="btn prev btn-danger"><i class="icon-angle-left"></i> Prev</button>
-        <span class="divider"></span>
-        <button class="btn next btn-danger">Next <i class="icon-angle-right"></i></button>
-        <span class="divider"></span>
-        <button class="btn" data-action="toEnd">End <i class="icon-double-angle-right"></i></button>
-      </div>
-
-    </div>
-  </div>
+  <% end %>
 </div>
+
+<br>
+<hr>
+<br>

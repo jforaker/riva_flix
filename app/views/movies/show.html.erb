@@ -3,14 +3,17 @@
     <div class="container">
       <img style="display: inline-block; margin-right: 20px" src="<%= @movie.poster %>">
 
-      <h3 style="display: inline-block"><%= @movie.title %></h3>
+      <h3 id="movie-name" style="display: inline-block"><%= @movie.title %></h3>
       <div class="tile" style="display: inline-block">
-      <p class="<% if @movie.critics_score.to_i > 50 %> red <% else %> green <% end %>">
-        Critics: <%= @movie.critics_score %></p>
-      <p class="<% if @movie.audience_score.to_i > 50 %> red <% else %> green <% end %>">
-        Audience: <%= @movie.audience_score %></p>
+        <p class="<% if @movie.critics_score.to_i > 50 %> red <% else %> green <% end %>">
+          Critics: <%= @movie.critics_score %></p>
+        <p class="<% if @movie.audience_score.to_i > 50 %> red <% else %> green <% end %>">
+          Audience: <%= @movie.audience_score %></p>
       </div>
       <br><br>
+
+      <%= high_chart("div_id", @chart)  %>
+
 
       <blockquote>
         <% if @movie.description != '' %>
@@ -25,12 +28,16 @@
             <p><%= @movie.reviews[0].quote  %></p>
         <% end %>
       </blockquote>
+
       <%= button_to "Add to your watch list",
                     {:controller => :watches,
                      :action => 'create',
                      :movie_id => @movie.movie_id },
                     :class => "btn btn-primary btn-block"
       %>
+
+      <%= render 'youtube_results' %>
+
     </div>
   </div>
 </div>
@@ -38,3 +45,28 @@
 
 
 
+<%= render 'similar_results' %>
+
+
+<script type="text/javascript">
+    $('h3').click(function() {
+
+        var chart = $('#div_id').highcharts();
+    chart.series[0].data[0].update({
+                //y:150,
+                colors: ["#34495E",
+                    "#2ECC71"],
+                marker:{
+                    fillColor: 'black',
+                    states: {
+                        hover: {
+                            fillColor: 'black',
+                            lineColor: 'black'
+                        }
+                    }
+                }
+            }
+    );
+    });
+
+</script>

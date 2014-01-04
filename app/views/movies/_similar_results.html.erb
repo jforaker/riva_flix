@@ -1,0 +1,32 @@
+
+<!--similar results-->
+<% if @similars.length %>
+<blockquote>
+  <h4>Similar movies </h4>
+</blockquote>
+
+<div class="masonry">
+  <% @similars.each do |movie| %>
+      <div class="item tiler">
+
+        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.original %>"></a>
+
+        <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
+          Critics: <%= movie.scores.critics_score %></p>
+        <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
+          Audience: <%= movie.scores.audience_score %></p>
+
+        <p><%= movie.synopsis %></p>
+
+        <%= button_to "add to watch list", {:controller => :watches,
+                                            :action => 'create',
+                                            :movie_id => movie.id,
+                                            :description => movie.synopsis,
+                                            :title => movie.name,
+                                            :poster => movie.posters.profile,
+                                            :critics_score => movie.scores.critics_score,
+                                            :audience_score => movie.scores.audience_score}, :class => "btn btn-primary btn-block" %>
+      </div>
+  <% end %>
+</div>
+<% end %>

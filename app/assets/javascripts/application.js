@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require imgloaded
+//= require masonry
+//= require bs
+//= require highcharts
+//= require shorten
+//= require youtube
 //= require sly
+//= require underscore
 //= require_tree .

@@ -1,3 +1,36 @@
 <h3>User</h3>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>Watch List: </p>
+
+
+
+
+<ul class="thumbnails" style="list-style-type: none;">
+  <% @user.watches.each do |item| %>
+      <li class="span5 clearfix">
+        <div class="something">
+          <a href="/movies/<%= item.movie_id %>" ><img src="<%= item.poster %>" alt="poster" class="pull-left span2 clearfix" style='margin-right:10px'></a>
+          <div class="caption" class="pull-left">
+            <h4>
+              <a href="/movies/<%= item.movie_id %>" ><%= item.title %></a>
+            </h4>
+            <p class="<% if item.critics_score.to_i > 50 %> red <% else %> green <% end %>">
+              Critics: <%= item.critics_score %></p>
+            <p class="<% if item.audience_score.to_i > 50 %> red <% else %> green <% end %>">
+              Audience: <%= item.audience_score %></p>
+
+
+            <div class="tagsinput" style="border: none; background: none">
+                    <span class="tag">
+                        <span style="position: relative; right: 2px;">Seen it!</span>
+                      <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
+                    </span>
+            </div>
+
+            <!--<small><b>RG: </b>99384877</small>-->
+          </div>
+        </div>
+      </li>
+  <% end %>
+</ul>

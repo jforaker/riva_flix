@@ -1,163 +1,90 @@
-/*global Sly */
 
 
-$(document).ready(function(){
-    //current
-    var $dvd = $('#current');
-    var $frame = $dvd.find('.frame'); window.frr = $frame;
-    var sly = new Sly($frame, {
-        horizontal: 1,
-        itemNav: 'forceCentered',
-        activateMiddle: 1,
-        smart: 1,
-        activateOn: 'click',
-        mouseDragging: 1,
-        touchDragging: 1,
-        releaseSwing: 1,
-        startAt: 10,
-        scrollBar: $dvd.find('.scrollbar'),
 
-        // Scrolling
-        scrollSource: null, // Element for catching the mouse wheel scrolling. Default is FRAME.
-        scrollBy:     0,
 
-        pagesBar: $dvd.find('.pages'),
-        activatePageOn: 'click',
-        speed: 300,
-        moveBy: 600,
-        elasticBounds: 1,
-        dragHandle: 1,
-        dynamicHandle: 1,
-        clickBar: 1,
+docReady( function() {
+    $(window).scroll( function(){
 
-        // Buttons
-        forward: $dvd.find('.forward'),
-        backward: $dvd.find('.backward'),
-        prev: $dvd.find('.prev'),
-        next: $dvd.find('.next'),
-        prevPage: $dvd.find('.prevPage'),
-        nextPage: $dvd.find('.nextPage')
-    }).init();
+        /* Check the location of each desired element */
+        var items = $('.item');
+        $(items).each( function(i){
 
-    // Method calling buttons
-    $dvd.on('click', 'button[data-action]', function () {
-        var action = $(this).data('action');
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-        switch (action) {
-            case 'add':
-                sly.add('<li>' + sly.items.length + '</li>');
-                break;
-            case 'remove':
-                sly.remove(-1);
-                break;
-            default:
-                sly[action]();
-        }
+            /* If the object is completely visible in the window, fade it it */
+            if( bottom_of_window > bottom_of_object ){
+
+                $(this).animate({'opacity':'1'},500);
+
+            }
+        })
+    });
+
+    //masonry
+
+    var $container = $('.masonry');
+    $container.find('.item').fadeIn();
+
+    $container.imagesLoaded(function(){
+        $container.masonry({
+            itemSelector : '.item',
+            // columnWidth: 60,
+            "gutter": 22,
+            "isFitWidth": true,
+
+            isAnimated: true,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+        });
     });
 
 
-    //new
-    var $new = $('#new');
-    var $newframe = $new.find('.frame'); window.nfrr = $newframe;
-    var newsly = new Sly($newframe, {
-        horizontal: 1,
-        itemNav: 'forceCentered',
-        activateMiddle: 1,
-        smart: 1,
-        activateOn: 'click',
-        mouseDragging: 1,
-        touchDragging: 1,
-        releaseSwing: 1,
-        startAt: 10,
-        scrollBar: $new.find('.scrollbar'),
-// Scrolling
-        scrollSource: null, // Element for catching the mouse wheel scrolling. Default is FRAME.
-        scrollBy:     0,           pagesBar: $new.find('.pages'),
-        activatePageOn: 'click',
-        speed: 300,
-        moveBy: 600,
-        elasticBounds: 1,
-        dragHandle: 1,
-        dynamicHandle: 1,
-        clickBar: 1,
+    //youtube
 
-        // Buttons
-        forward: $new.find('.forward'),
-        backward: $new.find('.backward'),
-        prev: $new.find('.prev'),
-        next: $new.find('.next'),
-        prevPage: $new.find('.prevPage'),
-        nextPage: $new.find('.nextPage')
-    }).init();
+    if( $('body').hasClass('show movies') || $('body').hasClass('search movies')){
 
-    // Method calling buttons
-    $new.on('click', 'button[data-action]', function () {
-        var action = $(this).data('action');
+        console.log("yessss");
 
-        switch (action) {
-            case 'add':
-                newsly.add('<li>' + newsly.items.length + '</li>');
-                break;
-            case 'remove':
-                newsly.remove(-1);
-                break;
-            default:
-                newsly[action]();
-        }
-    });
+        var title = ($('#movie-name')[0].innerHTML + ' official movie trailer');
+        console.log(title);
+
+        jQTubeUtil.search( title, function(response){
+            var html = "";
+            // for(v in response.videos){
+            var video = response.videos[0]; // this is a 'friendly' YouTubeVideo object
+            html += "<div class='item'><div class='player'></div><p>" + video.title + "</p></div>";
+
+            //}
+            jQuery(".youtube").html(html);
+
+            jQuery(".player").tubeplayer({
+                width: 600, // the width of the player
+                height: 450, // the height of the player
+                allowFullScreen: "true", // true by default, allow user to go full screen
+                initialVideo: video.videoId, // the video that is loaded into the player
+                preferredQuality: "default"// preferred quality: default, small, medium, large, hd720
+
+            });
+        });
+    } else {
+        console.log("noooo");
+    }
+
+    //shorten description
+    $('p.desc').shorten();
 
 
-    //upcoming
+    //alerts
+    $("#alerter").animate({
+        'opacity':'1',
+        'top': "+=150px"
+    },500);
 
-    var $upcoming = $('#upcoming');
-    var $newframe = $upcoming.find('.frame'); window.nfrr = $newframe;
-    var newsly = new Sly($newframe, {
-        horizontal: 1,
-        itemNav: 'forceCentered',
-        activateMiddle: 1,
-        smart: 1,
-        activateOn: 'click',
-        mouseDragging: 1,
-        touchDragging: 1,
-        releaseSwing: 1,
-        startAt: 10,
-        scrollBar: $upcoming.find('.scrollbar'),
-// Scrolling
-        scrollSource: null, // Element for catching the mouse wheel scrolling. Default is FRAME.
-        scrollBy:     0,
-        pagesBar: $upcoming.find('.pages'),
-        activatePageOn: 'click',
-        speed: 300,
-        moveBy: 600,
-        elasticBounds: 1,
-        dragHandle: 1,
-        dynamicHandle: 1,
-        clickBar: 1,
-
-        // Buttons
-        forward: $upcoming.find('.forward'),
-        backward: $upcoming.find('.backward'),
-        prev: $upcoming.find('.prev'),
-        next: $upcoming.find('.next'),
-        prevPage: $upcoming.find('.prevPage'),
-        nextPage: $upcoming.find('.nextPage')
-    }).init();
-
-    // Method calling buttons
-    $upcoming.on('click', 'button[data-action]', function () {
-        var action = $(this).data('action');
-
-        switch (action) {
-            case 'add':
-                newsly.add('<li>' + newsly.items.length + '</li>');
-                break;
-            case 'remove':
-                newsly.remove(-1);
-                break;
-            default:
-                newsly[action]();
-        }
-    });
 
 });
+
 

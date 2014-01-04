@@ -1,23 +1,25 @@
 
-<h4>New on dvd</h4>
+<h4>Opening movies</h4>
 
-<div class="masonry">
+<div id="" class="masonry">
 
-  <% @new_dvds.each do |movie| %>
+  <% @opening_movies.each do |movie| %>
       <div class="item masoner">
-        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
+        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.detailed %>"></a>
         <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-inverse btn-block" %>
         <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
           Critics: <%= movie.scores.critics_score %></p>
         <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
           Audience: <%= movie.scores.audience_score %></p>
 
-        <p class="desc"><%= movie.synopsis %></p>
+        <!--<div id="chart"style="min-width: 310px; height: 100px; margin: 0 auto"></div>-->
 
+        <p class="desc"><%= movie.synopsis %></p>
       </div>
 
   <% end %>
 </div>
+
 
 <br>
 <hr>
