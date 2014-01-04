@@ -30,19 +30,10 @@ class MoviesController < ApplicationController
   end
 
   def chart_method(movie)
-    #asdf
-    #@critics_score = movie.scores.critics_score ? movie.scores.critics_score : movie.critics_score      #movie.scores.critics_score ||
-    #@audience_score = movie.scores.audience_score ? movie.scores.audience_score : movie.audience_score  #movie.scores.audience_score ||
-
-    #@critics_score = movie.scores.critics_score
-    #@critics_score_s = movie.critics_score
-    #@audience_score = movie.scores.audience_score
-    #@audience_score_s = movie.audience_score
-
     @chart = LazyHighCharts::HighChart.new('graph', :class => movie.id, :style => "min-width: 350px; height: 200px; margin: 0 auto") do |f|
       f.xAxis(:categories => ["RottenScore"])
-      f.series(:name => "Audience", :yAxis => 0, :data => [movie.audience_score || movie.scores.audience_score])
-      f.series(:name => "Critics", :yAxis => 0, :data => [movie.critics_score || movie.scores.critics_score])
+      f.series(:name => "Audience", :yAxis => 0, :data => [movie.audience_score.to_i || movie.scores.audience_score.to_i])
+      f.series(:name => "Critics", :yAxis => 0, :data => [movie.critics_score.to_i || movie.scores.critics_score.to_i])
       f.yAxis [
                   {:title => {:text => "", :margin => 30} },
                   {:title => {:text => ""},  :opposite => true},
