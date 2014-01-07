@@ -1,3 +1,84 @@
+body { padding-top: 70px; }
+
+
+#tron{
+  //background: #1ABC9C !important;
+  background: url('http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2013/07/Lomo-Camera-iOS-7-Flat-Icon.jpg') no-repeat !important;
+  background-position: 101% 29% !important;
+}
+
+.first-title{
+  height: 100px;
+  vertical-align: middle;
+  display: inline-block;
+  padding-top: 70px;
+}
+
+.nav-container{
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  position: absolute;
+  left: 0;
+
+  nav{
+
+    background: rgba(44, 62, 80, 0.75);
+    position: relative;
+    width: 100%;
+    &.sticky {
+      ul{
+        margin-bottom: 1px;
+      }
+      width: 102%;
+      left: -20px;
+      padding-left: 20px;
+      position: fixed;
+      top: 15px;
+      //animation:thedrop 1s 1;
+      //-moz-animation:thedrop 1s 1;
+      //-webkit-animation:thedrop 1s 1;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        display: inline;
+        list-style: none;
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 1.2em;
+          color: #BDC3C7;
+          font-weight: bold;
+          display: inline-block;
+          text-align: center;
+          padding: .5em 1em;
+          -webkit-border-radius: 1px;
+          -moz-border-radius: 1px;
+          border-radius: 1px;
+
+          &.selected {
+            color: #fff;
+            background: #40bfe8;
+          }
+
+          &:hover{
+            color: #fff;
+            background: #40bfe8;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
 .masonry {
   background: #EEE;
   width: 97% !important;
@@ -15,7 +96,7 @@
 .masonry{
 
   .item {
-    opacity: 0;
+    opacity: 1;
     width:  372px;
     height: auto;
     float: left;
@@ -98,4 +179,67 @@ HR{
 }
 .fade.in {
   opacity: 1;
+}
+
+/*media queries*/
+
+/* #Tablet (Portrait) width of 768px */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .wrapper {
+    width: 700px;
+  }
+
+  nav {
+    width: 728px;
+  }
+
+}
+
+/* #Mobile (Portrait) width of 320px */
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: 300px;
+  }
+
+  .wrapper .column {
+    float: none;
+    width: 100%;
+  }
+
+  nav {
+    width: 328px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+}
+
+/* Mobile (Landscape) width of 480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .wrapper {
+    width: 400px;
+  }
+
+  nav {
+    width: 428px;
+  }
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  h3 {
+    font-size: 1.7em;
+  }
+
 }

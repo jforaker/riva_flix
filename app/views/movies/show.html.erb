@@ -11,6 +11,7 @@
           Audience: <%= @movie.audience_score %></p>
       </div>
       <br><br>
+      <%= @trailer %>
 
       <%= high_chart("div_id", @chart)  %>
 
@@ -47,26 +48,3 @@
 
 <%= render 'similar_results' %>
 
-
-<script type="text/javascript">
-    $('h3').click(function() {
-
-        var chart = $('#div_id').highcharts();
-    chart.series[0].data[0].update({
-                //y:150,
-                colors: ["#34495E",
-                    "#2ECC71"],
-                marker:{
-                    fillColor: 'black',
-                    states: {
-                        hover: {
-                            fillColor: 'black',
-                            lineColor: 'black'
-                        }
-                    }
-                }
-            }
-    );
-    });
-
-</script>

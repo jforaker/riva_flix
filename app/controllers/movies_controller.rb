@@ -1,10 +1,16 @@
 class MoviesController < ApplicationController
 
   @@bf = BadFruit.new("82dz4q87rndsb7v9t3wzt3x2")
+  Tmdb::Api.key("fc0e47838eaa8d1af428c2da1ba55976")
+  #Tmdb.api_key = "fc0e47838eaa8d1af428c2da1ba55976"
+  #Tmdb.default_language = "en"
+
 
   def index
+
     @opening_movies = @@bf.lists.opening_movies
     @opening_movies.each do |movie|
+
       movie_method(movie)
     end
 
@@ -97,6 +103,11 @@ class MoviesController < ApplicationController
     #search idd
     @movie = Movie.find_by_movie_id(params[:id])  || Movie.find(params[:id])
     idd =   "#{@movie.movie_id.to_i}"
+
+    tmdbmov = Tmdb::Movie.find(@movie.title)[0].id
+    tmd =  Tmdb::Movie.trailers(tmdbmov)
+    @youtube_id = !tmd["youtube"][0].blank? ? tmd["youtube"][0]["source"] : ""
+
 
     chart_method(@movie)
 

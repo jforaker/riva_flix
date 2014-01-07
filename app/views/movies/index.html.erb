@@ -1,11 +1,30 @@
-<div class="jumbotron">
+<div data-stellar-ratio="2" id="tron" class="jumbotron">
   <div class="container">
+    <!--<img src="http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2013/07/Lomo-Camera-iOS-7-Flat-Icon.jpg">-->
     <h3>Welcome to RivaFlix</h3>
     <% if user_signed_in? %>
         <h5><%= link_to "My watch list", watches_path %></h5>
     <% end %>
     <%= render 'search' %>
   </div>
+</div>
+
+<div class="nav-container">
+
+  <nav>
+
+    <ul>
+
+      <li><a data-link="#opening_movies" class="selected">Opening</a></li>
+      <li><a data-link="#upcoming_movies">Upcoming Movies</a></li>
+      <li><a data-link="#current_dvds">DVD's out now</a></li>
+      <li><a data-link="#new_dvds">New on DVD</a></li>
+      <li><a data-link="#upcoming_dvds">Upcoming DVD releases</a></li>
+
+    </ul>
+
+  </nav>
+
 </div>
 
 <%= render 'opening_movies' %>

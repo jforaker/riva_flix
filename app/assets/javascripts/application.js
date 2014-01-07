@@ -20,4 +20,7 @@
 //= require youtube
 //= require sly
 //= require underscore
+//= require stellar
+//= require scrollto
+//= require waypoints
 //= require_tree .

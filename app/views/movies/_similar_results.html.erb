@@ -1,6 +1,6 @@
 
 <!--similar results-->
-<% if @similars.length %>
+<% if @similars.length != 0 %>
 <blockquote>
   <h4>Similar movies </h4>
 </blockquote>
@@ -16,7 +16,7 @@
         <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
           Audience: <%= movie.scores.audience_score %></p>
 
-        <p><%= movie.synopsis %></p>
+        <p class="desc"><%= movie.synopsis %></p>
 
         <%= button_to "add to watch list", {:controller => :watches,
                                             :action => 'create',
