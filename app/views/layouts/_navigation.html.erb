@@ -1,27 +1,39 @@
-<div class="row">
-  <div class="navbar navbar-inverse navbar-fixed-top ">
-    <div class="navbar-collapse collapse navbar-collapse-01">
-      <ul class="nav navbar-nav">
-
-        <li><%= link_to "Home", root_path  %></li>
-
-        <% if user_signed_in? %>
-
-            <li>  <%= link_to "My watch list :: #{ current_user.watches.count.to_s }", watches_path %> </li>
-            <li style="cursor: crosshair">
-              <a>Logged in as <%= current_user.name %></a>
-            </li>
-            <li>
-              <%= link_to 'Logout', signout_path %>
-            </li>
-        <% else %>
-            <li>
-              <%= link_to 'Login', signin_path %>
-            </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
 
 
+<!-- HEADER -->
+<header class="block">
+  <ul class="header-menu horizontal-list">
+    <li>
+      <span style="cursor: pointer" class="header-menu-tab" href="#"><i class="fa fa-home"></i><%= link_to "Home", root_path  %></span>
+    </li>
+
+    <% if user_signed_in? %>
+        <li style="cursor: crosshair; padding-left: 5px" class="header-menu-tab profile-menu">
+          <p><%= link_to current_user.name, user_path(current_user) %></p>
+          <div class="profile-picture small-profile-picture">
+            <img width="50px"  src="<%= current_user.image %>">
+          </div>
+        </li>
+        <li>
+          <span style="cursor: pointer" class="header-menu-tab" href="#"><i class="fa fa-camera-retro"></i><%= link_to "My watch list", watches_path %></span>
+          <%= link_to "#{ current_user.watches.count.to_s }",watches_path , class: "header-menu-number" %>
+        </li>
+        <li>
+          <span style="cursor: pointer" class="header-menu-tab" href="#"><i class="fa fa-users"></i><%= link_to "Users", users_path %></span>
+        </li>
+
+        <li>
+          <span style="cursor: pointer" class="header-menu-tab" href="#"><i class="fa fa-sign-out"></i><%= link_to 'Logout', signout_path %></span>
+        </li>
+    <% else %>
+        <div style="float: left">
+          <span class="header-menu-tab" href="#"><i class="fa fa-sign-in"></i><%= link_to 'Login', signin_path %></span>
+        </div>
+    <% end %>
+
+    <!--<li>-->
+    <!--<a class="header-menu-tab" href="#5"><span class="icon fontawesome-star-empty scnd-font-color"></span>Favorites</a>-->
+    <!--</li>-->
+  </ul>
+
+</header>

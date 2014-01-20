@@ -1,0 +1,4 @@
+<span class="watch-again-span">
+  <%= link_to "Would you watch again?", like_path(likeable_id: likeable.id, likeable_type: likeable.class) , remote: true, method: :get , class: 'like' %>
+  <i class="thumbs-up fa fa-thumbs-o-up"></i>
+</span>

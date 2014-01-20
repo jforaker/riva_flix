@@ -1,4 +1,8 @@
 <%# Rails flash messages styled for Bootstrap 3.0 %>
+
+<%= flash_notifications %>
+
+
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div id="alerter" class="alert alert-<%= name == :notice ? "success" : "danger" %> fade">

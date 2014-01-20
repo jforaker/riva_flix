@@ -16,7 +16,8 @@ gem "highcharts-rails", "~> 3.0.7"
 gem "lazy_high_charts", "~> 1.5.1"
 gem 'underscore-rails'
 gem  "themoviedb"
-
+gem 'socialization'
+gem 'font-awesome-sass'
 
 #gem "less-rails"
 #gem 'therubyracer'

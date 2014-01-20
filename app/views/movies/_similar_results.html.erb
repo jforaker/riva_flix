@@ -9,7 +9,7 @@
   <% @similars.each do |movie| %>
       <div class="item tiler">
 
-        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.original %>"></a>
+        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
 
         <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
           Critics: <%= movie.scores.critics_score %></p>

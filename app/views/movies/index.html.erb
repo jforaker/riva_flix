@@ -1,12 +1,14 @@
-<div data-stellar-ratio="2" id="tron" class="jumbotron">
-  <div class="container">
-    <!--<img src="http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2013/07/Lomo-Camera-iOS-7-Flat-Icon.jpg">-->
-    <h3>Welcome to RivaFlix</h3>
-    <% if user_signed_in? %>
-        <h5><%= link_to "My watch list", watches_path %></h5>
-    <% end %>
-    <%= render 'search' %>
+<div id="tron" class="jumbotron">
+  <div id="front" class="container">
+    <!--<h3>Welcome to RivaFlix</h3>-->
+
   </div>
+  <% if user_signed_in? %>
+      <h5 class="container"><%= link_to "My watch list", watches_path %></h5>
+  <% end %>
+  <%= render 'search' %>
+
+  <br>
 </div>
 
 <div class="nav-container">

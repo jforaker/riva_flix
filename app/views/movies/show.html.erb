@@ -1,20 +1,36 @@
-<div class="row">
-  <div class="jumbotron">
-    <div class="container">
-      <img style="display: inline-block; margin-right: 20px" src="<%= @movie.poster %>">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
-      <h3 id="movie-name" style="display: inline-block"><%= @movie.title %></h3>
-      <div class="tile" style="display: inline-block">
-        <p class="<% if @movie.critics_score.to_i > 50 %> red <% else %> green <% end %>">
-          Critics: <%= @movie.critics_score %></p>
-        <p class="<% if @movie.audience_score.to_i > 50 %> red <% else %> green <% end %>">
-          Audience: <%= @movie.audience_score %></p>
-      </div>
-      <br><br>
-      <%= @trailer %>
+<div class="row">
+  <div class="jumbotron jumbo-details">
+    <div class="icons-holder">
+      <span id="collapse"><i class="closer fa fa-times-circle"></i></span>
+      <span id="volumer"><i class="tubular-mute fa fa-volume-up"></i></span>
+    </div>
+
+    <div class="container" id="accordian">
+      <img class="movie-poster" src="<%= @movie.poster %>">
+
+      <h3 id="movie-name"><%= @movie.title %></h3>
+      <p class="<% if @movie.critics_score.to_i > 50 %> red <% else %> green <% end %>">
+        Critics: <%= @movie.critics_score %></p>
+      <p class="<% if @movie.audience_score.to_i > 50 %> red <% else %> green <% end %>">
+        Audience: <%= @movie.audience_score %></p>
+
+      <%= button_to "Add to your watch list",
+                    {:controller => :watches,
+                     :action => 'create',
+                     :movie_id => @movie.movie_id },
+                    :class => "btn btn-primary"
+      %>
+      <br>
+
+      <a href="#" class="tubular-play">Play</a>
+      <a href="#" class="tubular-pause">Pause</a>
+      <a href="#" class="tubular-volume-up">Volume Up</a>
+      <a href="#" class="tubular-volume-down">Volume Down</a>
+      <a href="#" class="tubular-mute">Mute</a>
 
       <%= high_chart("div_id", @chart)  %>
-
 
       <blockquote>
         <% if @movie.description != '' %>
@@ -23,28 +39,14 @@
         <% end %>
       </blockquote>
 
-      <blockquote>
-        <% if @movie.movie_reviews != '' && @movie.movie_reviews != nil %>
-            <h5>Review from <%=@movie.reviews[0].publication %>:</h5>
-            <p><%= @movie.reviews[0].quote  %></p>
-        <% end %>
-      </blockquote>
-
-      <%= button_to "Add to your watch list",
-                    {:controller => :watches,
-                     :action => 'create',
-                     :movie_id => @movie.movie_id },
-                    :class => "btn btn-primary btn-block"
-      %>
 
       <%= render 'youtube_results' %>
+      <%= render 'similar_results' %>
 
     </div>
+
   </div>
 </div>
 
 
-
-
-<%= render 'similar_results' %>
 

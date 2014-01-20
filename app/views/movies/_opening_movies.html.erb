@@ -1,27 +1,25 @@
-
-<h4 class="first-title">Opening movies</h4>
-
-<section id="opening_movies" data-stellar-ratio="1" class="masonry">
-
+<hr style="visibility: hidden">
+<h3 class="first-title indexList">Opening movies</h3>
+<div id="opening_movies" class="masonry">
   <% @opening_movies.each do |movie| %>
-      <div class="item masoner">
-        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.detailed %>"></a>
-        <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-inverse btn-block" %>
+      <div class="item">
+
+        <%= button_to({:controller => :watches, :action => 'create', :movie_id => movie.id}, :class => "buttoner") do %>
+            <div class="outliner"><i class="fui-plus"></i></div>
+        <% end %>
+
+        <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
+        <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-blueboy btn-block" %>
         <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
           Critics: <%= movie.scores.critics_score %></p>
         <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
           Audience: <%= movie.scores.audience_score %></p>
 
-        <!--<div id="chart"style="min-width: 310px; height: 100px; margin: 0 auto"></div>-->
-
         <p class="desc"><%= movie.synopsis %></p>
+
       </div>
 
   <% end %>
-</section>
-
-
+</div>
 <br>
 <hr>
-<br>
-

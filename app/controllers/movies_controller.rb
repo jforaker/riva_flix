@@ -3,8 +3,6 @@ class MoviesController < ApplicationController
   @@bf = BadFruit.new("82dz4q87rndsb7v9t3wzt3x2")
   Tmdb::Api.key("fc0e47838eaa8d1af428c2da1ba55976")
   #Tmdb.api_key = "fc0e47838eaa8d1af428c2da1ba55976"
-  #Tmdb.default_language = "en"
-
 
   def index
 
@@ -38,8 +36,8 @@ class MoviesController < ApplicationController
   def chart_method(movie)
     @chart = LazyHighCharts::HighChart.new('graph', :class => movie.id, :style => "min-width: 350px; height: 200px; margin: 0 auto") do |f|
       f.xAxis(:categories => ["RottenScore"])
-      f.series(:name => "Audience", :yAxis => 0, :data => [movie.audience_score.to_i || movie.scores.audience_score.to_i])
-      f.series(:name => "Critics", :yAxis => 0, :data => [movie.critics_score.to_i || movie.scores.critics_score.to_i])
+      f.series(:name => "Audience", :yAxis => 0, :data => [params[:action] == "search" ? movie.scores.audience_score.to_i : movie.audience_score.to_i])
+      f.series(:name => "Critics", :yAxis => 0, :data => [params[:action] == "search" ? movie.scores.critics_score.to_i : movie.critics_score.to_i])
       f.yAxis [
                   {:title => {:text => "", :margin => 30} },
                   {:title => {:text => ""},  :opposite => true},
@@ -57,6 +55,9 @@ class MoviesController < ApplicationController
     @results.each do |movie|
       @id = movie.id
       @movie_id = params[:movie_id]
+      tmdbmov = Tmdb::Movie.find(movie.name)[0].id
+      tmd =  Tmdb::Movie.trailers(tmdbmov)
+      @youtube_id = !tmd["youtube"][0].blank? ? tmd["youtube"][0]["source"] : ""
       movie_method(movie)
       chart_method(movie)
     end
@@ -71,7 +72,9 @@ class MoviesController < ApplicationController
         movie_method(movie)
       end
     else
-      redirect_to root_path, :alert => "try again"
+      redirect_to root_path, :alert => "try a real movie title" #{current_user.name}
+      #flash[:error] = "movie deleted."
+
     end
   end
 
@@ -134,9 +137,7 @@ class MoviesController < ApplicationController
 end
 
 
-#home tab
 #tab for each section > scroll
-#      trailer
 #      save what i've watched
 #rate as "watch again"  or "would not watch again" (suggest it to a friend)
 #send a list to a friend

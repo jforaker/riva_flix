@@ -1,0 +1,33 @@
+$base:      #34495e;
+$firm:      #1abc9c;
+
+$gray:      #95a5a6;
+$lightgray: #ecf0f1;
+$inverse:   #fff;
+
+$lightPurp: #BBC2DA;
+$newBlue:  #C3E3E4;
+
+$success:   #2ecc71;
+$danger:    #2980B9;
+$warning:   #C0392B;
+$info:      #3498db;
+$purp:      #8E44AD;
+$blueBoy:   #4fc4f6;
+$hover:     #11a8ab;
+
+$longShadow: $hover -1px 1px,
+  $hover  -2px 2px,
+  $hover  -3px 3px,
+  $hover  -4px 4px,
+  $hover  -5px 5px,
+  $hover  -6px 6px,
+  $hover  -7px 7px;
+
+$longShadowHover:  $purp -1px 1px,
+  $purp  -2px 2px,
+  $purp  -3px 3px,
+  $purp  -4px 4px,
+  $purp  -5px 5px,
+  $purp  -6px 6px,
+  $purp  -7px 7px;

@@ -1,0 +1,4 @@
+<span class="not-watch-again-span">
+<%= link_to "I would NOT watch it again", unlike_path(likeable_id: likeable.id, likeable_type: likeable.class ), remote: true, method: :get , class: 'unlike' %>
+  <i class="thumbs-down fa fa-thumbs-o-down"></i>
+</span>

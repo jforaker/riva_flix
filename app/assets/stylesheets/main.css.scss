@@ -1,0 +1,194 @@
+$base:      #34495e;
+$firm:      #1abc9c;
+
+$gray:      #95a5a6;
+$lightgray: #ecf0f1;
+$inverse:   #fff;
+
+$success:   #2ecc71;
+$danger:    #2980B9;
+$warning:   #C0392B;
+$info:      #3498db;
+$redman:    #E74C3C;
+$greenman:   #2ECC71;
+
+// import the CSS framework
+@import "bootstrap";
+
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/assets/lato-regular-webfont.eot');
+  src: url('/assets/lato-regular-webfont.eot?#iefix') format("embedded-opentype"), url('/assets/lato-regular-webfont.woff') format("woff"), url('/assets/lato-regular-webfont.ttf') format("truetype"), url('/assets/lato-regular-webfont.svg#latoregular') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Flat-UI-Icons';
+  src: url('/assets/Flat-UI-Icons.eot');
+  src: url('/assets/Flat-UI-Icons.eot?#iefix') format("embedded-opentype"), url('/assets/Flat-UI-Icons.woff') format("woff"), url('/assets/Flat-UI-Icons.ttf') format("truetype"), url('/assets/Flat-UI-Icons.svg#Flat-UI-Icons') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  //padding-top: 70px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.72222;
+  color: $base;
+  background-color: #1f253d;
+}
+
+a {
+  color: #16a085;
+  text-decoration: none;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  &:hover, &:focus {
+    color: #1abc9c;
+    text-decoration: none;
+  }
+}
+
+
+p{
+  margin: 0 !important;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  &.red{
+    color: $redman !important;
+  }
+  &.green{
+    color: $greenman !important;
+  }
+}
+
+
+// make all images responsive by default
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+}
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: inherit;
+}
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  @extend .text-center;
+}
+.form {
+  @extend .col-md-6;
+}
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+}
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+}
+// apply styles to HTML elements
+// to make views framework-neutral
+main {
+  @extend .container;
+  padding-bottom: 80px;
+  width: 100%;
+  margin-top: 51px; // accommodate the navbar
+}
+section {
+  @extend .row;
+  margin-top: 20px;
+}
+
+.row{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+
+#alerter{
+  //opacity: 0;
+  //top: 0;
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.55s linear;
+  -moz-transition: opacity 0.55s linear;
+  -o-transition: opacity 0.55s linear;
+  transition: opacity 0.55s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+
+/*media queries*/
+
+/* #Tablet (Portrait) width of 768px */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .wrapper {
+    width: 700px;
+  }
+
+  nav {
+    width: 728px;
+  }
+
+}
+
+/* #Mobile (Portrait) width of 320px */
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: 300px;
+  }
+
+  .wrapper .column {
+    float: none;
+    width: 100%;
+  }
+
+  nav {
+    width: 328px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+}
+
+/* Mobile (Landscape) width of 480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .wrapper {
+    width: 400px;
+  }
+
+  nav {
+    width: 428px;
+  }
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  h3 {
+    font-size: 1.7em;
+  }
+
+}

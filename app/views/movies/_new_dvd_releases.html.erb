@@ -1,12 +1,15 @@
-
-<h4>New on dvd</h4>
-
-<section id="new_dvds" data-stellar-ratio="1" class="masonry">
+<h3 class="indexList">New on dvd</h3>
+<div id="new_dvds" class="masonry">
 
   <% @new_dvds.each do |movie| %>
-      <div class="item masoner">
+      <div class="item">
+
+        <%= button_to({:controller => :watches, :action => 'create', :movie_id => movie.id}, :class => "buttoner") do %>
+            <div class="outliner"><i class="fui-plus"></i></div>
+        <% end %>
+
         <a href="/movies/<%= movie.id %>"> <img src="<%= movie.posters.profile %>"></a>
-        <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-inverse btn-block" %>
+        <%= link_to movie.name, movie_path(movie.id), :class => "btn btn-blueboy btn-block" %>
         <p class="<% if movie.scores.critics_score > 50 %> red <% else %> green <% end %>">
           Critics: <%= movie.scores.critics_score %></p>
         <p class="<% if movie.scores.audience_score > 50 %> red <% else %> green <% end %>">
@@ -15,11 +18,8 @@
         <p class="desc"><%= movie.synopsis %></p>
 
       </div>
-
   <% end %>
-</section>
-
+</div>
 <br>
 <hr>
-<br>
 

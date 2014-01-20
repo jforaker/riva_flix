@@ -1,11 +1,12 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<p>Watch List: </p>
+<h3><%= @user.name %></h3>
+<%= render 'follow_form' , user: @user%>
 
+<p>Followed by <%= @user.followers(User).count %> people <%= @followers %></p>
+<% @user.followers(User).each do |follower| %>
+    <%= link_to follower.name, follower %>
+<% end %>
 
-
-
+<h3><%= @user.name %>'s Watch List: </h3>
 <ul class="thumbnails" style="list-style-type: none;">
   <% @user.watches.each do |item| %>
       <li class="span5 clearfix">
@@ -22,13 +23,21 @@
 
 
             <div class="tagsinput" style="border: none; background: none">
-                    <span class="tag">
-                        <span style="position: relative; right: 2px;">Seen it!</span>
-                      <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
-                    </span>
+                <span class="tag">
+                    <span style="position: relative; right: 2px;">Seen it!</span>
+                  <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
+                </span>
+              <% if item.likers(User).count > 0 %>
+               <span class="tag">
+                  <span>would watch it again </span>
+               </span>
+              <% else %>
+               <span class="tag">
+                  <span>would NOT watch it again </span>
+               </span>
+              <% end %>
             </div>
 
-            <!--<small><b>RG: </b>99384877</small>-->
           </div>
         </div>
       </li>

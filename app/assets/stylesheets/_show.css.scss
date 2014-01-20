@@ -1,0 +1,72 @@
+@import "variables_and_such";
+
+#tubular-container, #tubular-shield{
+  //height: 92% !important;
+  top: 80px !important;
+}
+
+#collapse{
+  padding-right: 17%;
+  cursor: pointer;
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+
+  .opener{
+    padding: 0px !important;
+  }
+
+  .closer{
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    padding: 0px !important;
+
+    &:hover{
+      right: 2px;
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
+}
+
+#volumer{
+  padding-right: 17%;
+  cursor: pointer;
+  font-size: 1.7em;
+  position: absolute;
+  right: -9px;
+  top: 115px;
+}
+.jumbo-details{
+  //background: none !important;
+  background: rgba(20, 15, 15, 0.41) !important;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+  position: relative;
+  top: 0;
+
+  &.upTop{
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    top: -229px;
+  }
+}
+#movie-name{
+  color: $base !important;
+  display: inline-block
+}
+
+.movie-poster{
+  display: inline-block;
+  margin-right: 20px;
+  margin: 0 20px 10px 0;
+  box-shadow: 3px 3px $gray;
+  box-shadow: $longShadow;
+  transition: box-shadow 0.4s;
+
+  &:hover {
+    box-shadow: $longShadowHover;
+    transition: box-shadow 0.4s;
+
+  }
+}

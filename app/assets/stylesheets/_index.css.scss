@@ -1,0 +1,238 @@
+
+@import "variables_and_such";
+
+
+
+.nav-container{
+  z-index: 2;
+  width: 100%;
+  position: absolute;
+  left: 0;
+
+  nav{
+
+    background: $purp;
+    position: relative;
+    width: 100%;
+    height: 54px;
+    -moz-transition: all .7s;
+    -webkit-transition: all .7s;
+    transition: all .7s;
+
+    &.sticky {
+      -moz-transition: all .7s;
+      -webkit-transition: all .7s;
+      transition: all .7s;
+      width: 102%;
+      left: -20px;
+      padding-left: 20px;
+      position: fixed;
+      top: 0px;
+      ul{
+        margin-bottom: 1px;
+      }
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        display: inline;
+        list-style: none;
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 1.2em;
+          color: #BDC3C7;
+          font-weight: bold;
+          display: inline-block;
+          text-align: center;
+          padding: .3em 1em;
+          border-bottom: 4px solid transparent;
+          border-left: 4px solid transparent;
+
+          &.selected {
+            color: #fff;
+            background: #11a8ab;
+            border-bottom: 4px solid darken( $hover, 10% );
+            border-left: 4px solid darken( $hover, 10% );
+          }
+
+          &:hover{
+            color: #fff;
+            background: #11a8ab;
+            border-bottom: 4px solid darken( $hover, 10% );
+            border-left: 4px solid darken( $hover, 10% );
+            //border-bottom: 4px solid $purp;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+#tron{
+
+  background: $newBlue;
+}
+
+.first-title{
+  height: 100px;
+  vertical-align: middle;
+  display: inline-block;
+  padding-top: 12px;
+}
+
+H3.indexList{
+  color: $lightgray !important;
+  text-shadow: $longShadow;
+  height: 91px;
+  position: relative;
+  top: 21px;
+  left: 9px;
+}
+
+#front{
+  //RivaFlix logo
+  background: url("rf400png.png") no-repeat;
+  height: 119px;
+}
+
+//PLUS  button ---------------
+
+BUTTON.buttoner{
+  background: transparent;
+  outline: none;
+  border: none;
+
+  .outliner{
+    display: inline-block;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    top: 2px;
+    background: $lightgray;
+    -webkit-transition: background .4s;
+    transition: background .4s;
+
+    &:hover{
+      background: $gray;
+      -webkit-transition: background .4s;
+      transition: background .4s;
+    }
+  }
+  .fui-plus{
+    color: $gray;
+    position: relative;
+    bottom:3px;
+    left: 0px;
+    -webkit-transition: background .4s;
+    transition: background .4s;
+
+    &:hover{
+      color:  $hover;
+      -webkit-transition: background .4s;
+      transition: background .4s;
+    }
+  }
+}
+
+
+/* clearfix */
+.masonry:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.masonry{
+  background: $newBlue;
+  margin: 0 auto;
+  border-radius: 6px;
+  //margin-left: 0 !important;
+  //margin-right: 0 !important;
+
+  .item {
+    opacity: 0;
+    width:  316px;
+    height: auto;
+    float: left;
+    margin-bottom: 10px;
+    display: inline-block;
+    background: #FEFEFE;
+    border-radius: 0px; //4px
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 28px;
+    column-break-inside: avoid;
+    padding: 15px;
+    background: linear-gradient(45deg, #FFF, #F9F9F9);
+
+    .movie-poster{
+      display: block;
+      margin: 0 auto;
+      box-shadow: none;
+      transition: box-shadow 0.4s;
+      &:hover {
+        box-shadow: $longShadowHover;
+        transition: box-shadow 0.4s;
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.btn-blueboy{
+  background: $hover;
+  margin: 15px auto;
+  margin-bottom: 10px !important;
+  &:hover{
+    background: darken( $hover, 10% );
+    color: white !important;
+  }
+}
+
+
+/*
+FONT AWESOME       //////////////////
+*/
+
+.fa{
+  color: gray;
+  font-size: 1.5em;
+  padding: 0px 10px 0 0;
+  -moz-transition:background .4s;
+  -webkit-transition: background .4s;
+  transition: background .4s;
+  &:hover{
+    color: $hover;
+    -moz-transition:background .4s;
+    -webkit-transition: background .4s;
+    transition: background .4s;
+  }
+}
+
+////////////////
+
+HR{
+  height: 12px;
+  border: 0;
+  border-top: 7px dashed $purp !important;
+  width: 72%;
+  box-shadow: $longShadow;
+
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}

@@ -1,37 +1,75 @@
 
-<%= link_to "back home", root_path  %>
-<h4>You have <%= @watches.count %> movies left to see</h4>
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <ul class="thumbnails" style="list-style-type: none;">
-        <% @watches.each do |item| %>
-            <li class="span5 clearfix">
-              <div class="something">
-                <a href="/movies/<%= item.movie_id %>" ><img src="<%= item.poster %>" alt="poster" class="pull-left span2 clearfix" style='margin-right:10px'></a>
-                <div class="caption" class="pull-left">
-                  <h4>
-                    <a href="/movies/<%= item.movie_id %>" ><%= item.title %></a>
-                  </h4>
-                  <p class="<% if item.critics_score.to_i > 50 %> red <% else %> green <% end %>">
-                    Critics: <%= item.critics_score %></p>
-                  <p class="<% if item.audience_score.to_i > 50 %> red <% else %> green <% end %>">
-                    Audience: <%= item.audience_score %></p>
+<%= link_to "back home", root_path %>
+<h3>You have <%= @watches.count %> movies left to see</h3>
 
+<div class="masonry">
+  <% @watches.each do |item| %>
+      <div class="item">
+        <a href="/movies/<%= item.movie_id %>" ><img class="movie-poster" src="<%= item.poster %>" alt="poster" class="pull-left span2 clearfix"></a>
+        <div class="caption" class="pull-left">
+          <h4>
+            <a href="/movies/<%= item.movie_id %>" ><%= item.title %></a>
+          </h4>
+          <p class="<% if item.critics_score.to_i > 50 %> red <% else %> green <% end %>">
+            Critics: <%= item.critics_score %></p>
+          <p class="<% if item.audience_score.to_i > 50 %> red <% else %> green <% end %>">
+            Audience: <%= item.audience_score %></p>
 
-                  <div class="tagsinput" style="border: none; background: none">
-                    <span class="tag">
-                        <span style="position: relative; right: 2px;">Seen it!</span>
-                        <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
-                    </span>
-                  </div>
+          <div class="tagsinput">
+                <span class="tag">
+                    <span style="position: relative; right: 4px;">Seen it!</span>
+                  <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
+                </span>
+                <span class="liker tag">
+                  <%= render 'like_form', likeable: item %>
+                </span>
+          </div>
 
-                  <!--<small><b>RG: </b>99384877</small>-->
-                </div>
-              </div>
-            </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+        </div>
+      </div>
+  <% end %>
 </div>
+
+<ul class="timeline">
+
+  <% @watches.each do |item| %>
+      <li>
+        <div class="timeline-badge">
+          <div class="tagsinput">
+                <span class="tag">
+                    <span style="position: relative; right: 4px;">Seen it!</span>
+                  <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
+                </span>
+          </div>
+        </div>
+        <div class="timeline-panel">
+          <div class="item">
+            <a href="/movies/<%= item.movie_id %>" ><img class="movie-poster" src="<%= item.poster %>" alt="poster" class="pull-left span2 clearfix"></a>
+            <div class="caption" class="pull-left">
+              <h4>
+                <a href="/movies/<%= item.movie_id %>" ><%= item.title %></a>
+              </h4>
+              <p class="<% if item.critics_score.to_i > 50 %> red <% else %> green <% end %>">
+                Critics: <%= item.critics_score %></p>
+              <p class="<% if item.audience_score.to_i > 50 %> red <% else %> green <% end %>">
+                Audience: <%= item.audience_score %></p>
+
+              <div class="tagsinput">
+                <span class="tag">
+                    <span style="position: relative; right: 4px;">Seen it!</span>
+                  <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>
+                </span>
+                <span class="liker tag">
+                  <%= render 'like_form', likeable: item %>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+  <% end %>
+</ul>
+
+
+
