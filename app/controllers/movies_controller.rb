@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
-  @@bf = BadFruit.new("82dz4q87rndsb7v9t3wzt3x2")
-  Tmdb::Api.key("fc0e47838eaa8d1af428c2da1ba55976")
+  @@bf = BadFruit.new(ENV['BADFRUIT_API_KEY'])
+  Tmdb::Api.key(ENV['TMDB_API_KEY'])
   #Tmdb.api_key = "fc0e47838eaa8d1af428c2da1ba55976"
 
   def index
