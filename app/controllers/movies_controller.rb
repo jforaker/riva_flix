@@ -8,8 +8,8 @@ class MoviesController < ApplicationController
 
     @opening_movies = @@bf.lists.opening_movies
     @opening_movies.each do |movie|
-
       movie_method(movie)
+
     end
 
     @upcoming_movies = @@bf.lists.upcoming_movies
@@ -30,6 +30,35 @@ class MoviesController < ApplicationController
     @upcoming_dvds = @@bf.lists.upcoming_dvd_releases
     @upcoming_dvds.each do |movie|
       movie_method(movie)
+    end
+  end
+
+  def movie_method(movie)
+    params[:poster] = movie.posters.profile
+    params[:movie_id] = movie.id
+    @movie_id = params[:movie_id]
+    params[:description] = movie.synopsis
+    params[:title] = movie.name
+    params[:critics_score] = movie.scores.critics_score
+    params[:audience_score] = movie.scores.audience_score
+    mov_params = params.permit(:movie_id, :description, :title, :poster, :movie_reviews, :audience_score, :critics_score)
+    create mov_params
+  end
+
+  def create mov_pars
+    if Movie.where(:movie_id => @movie_id).blank?
+      # no movie record for this id
+      @movie = Movie.new(mov_pars)
+
+      #@likes = @movie.likers(User)
+      #
+
+      #HERE
+
+      @movie.save
+    else
+      # at least 1 record for this movie
+      return false
     end
   end
 
@@ -78,28 +107,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def movie_method(movie)
-    params[:poster] = movie.posters.profile
-    params[:movie_id] = movie.id
-    @movie_id = params[:movie_id]
-    params[:description] = movie.synopsis
-    params[:title] = movie.name
-    params[:critics_score] = movie.scores.critics_score
-    params[:audience_score] = movie.scores.audience_score
-    mov_params = params.permit(:movie_id, :description, :title, :poster, :movie_reviews, :audience_score, :critics_score)
-    create mov_params
-  end
 
-  def create mov_pars
-    if Movie.where(:movie_id => @movie_id).blank?
-      # no movie record for this id
-      @movie = Movie.new(mov_pars)
-      @movie.save
-    else
-      # at least 1 record for this movie
-      return false
-    end
-  end
 
 
   def show
@@ -110,6 +118,7 @@ class MoviesController < ApplicationController
     tmdbmov = Tmdb::Movie.find(@movie.title)[0].id
     tmd =  Tmdb::Movie.trailers(tmdbmov)
     @youtube_id = !tmd["youtube"][0].blank? ? tmd["youtube"][0]["source"] : ""
+    @likes = @movie.likers(User)
 
 
     chart_method(@movie)

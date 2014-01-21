@@ -1,6 +1,7 @@
 
 @import "variables_and_such";
 
+@import "mixins";
 
 
 .nav-container{
@@ -8,6 +9,8 @@
   width: 100%;
   position: absolute;
   left: 0;
+
+
 
   nav{
 
@@ -39,6 +42,12 @@
       li {
         display: inline;
         list-style: none;
+        cursor: pointer;
+
+        //@include MQ(M) {
+        //  display: block;
+        //}
+
         a {
           cursor: pointer;
           text-decoration: none;
@@ -50,6 +59,14 @@
           padding: .3em 1em;
           border-bottom: 4px solid transparent;
           border-left: 4px solid transparent;
+
+          @include MQ(M) {
+
+            padding: 6px;
+            font-size: 18px;
+            line-height: 1;
+
+          }
 
           &.selected {
             color: #fff;
@@ -73,8 +90,17 @@
 }
 
 #tron{
-
   background: $newBlue;
+
+  #main-search{
+    height: 50px;
+    border-radius: 0px;
+  }
+
+  #go-button{
+    height: 47px;
+    font-size: 19px;
+  }
 }
 
 .first-title{
@@ -99,6 +125,8 @@ H3.indexList{
   height: 119px;
 }
 
+
+
 //PLUS  button ---------------
 
 BUTTON.buttoner{
@@ -118,7 +146,7 @@ BUTTON.buttoner{
     transition: background .4s;
 
     &:hover{
-      background: $gray;
+      background: darken($lightgray, 10%);
       -webkit-transition: background .4s;
       transition: background .4s;
     }
@@ -127,7 +155,7 @@ BUTTON.buttoner{
     color: $gray;
     position: relative;
     bottom:3px;
-    left: 0px;
+    left: 1px;
     -webkit-transition: background .4s;
     transition: background .4s;
 

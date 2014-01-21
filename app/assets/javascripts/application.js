@@ -22,4 +22,5 @@
 //= require underscore
 //= require scrollto
 //= require waypoints
+//= require naver
 //= require_tree .

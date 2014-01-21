@@ -1,0 +1,121 @@
+@import "variables_and_such.css.scss";
+@import 'compass';
+
+@mixin MQ($canvas) {
+  @if $canvas == XXS {
+    @media only screen and (max-width: 20em) { @content; } //320px
+  }
+  @else if $canvas == XS {
+    @media only screen and (max-width: 30em) { @content; } //480px
+  }
+  @else if $canvas == S {
+    @media only screen and (max-width: 37.5em) { @content; } //600px
+  }
+  @else if $canvas == M {
+    @media only screen and (max-width: 48em) { @content; } //768px
+  }
+  @else if $canvas == L {
+    @media only screen and (max-width: 64em) { @content; } //1024px
+  }
+  @else if $canvas == XL {
+    @media only screen and (min-width: 75em) { @content; } //1200px
+  }
+}
+
+
+
+#tagline {
+  height: 600px;
+  background: image-url('bg_img_xl.jpg') no-repeat center center;
+  background-size: cover;
+  .taglineMessage {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translateY(-50%) translateX(-50%));
+    width: 100%;
+    h1 {
+      font-size: 4.375em;
+      color: white;
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: 1.2;
+      text-shadow: 0 1px 1px rgba(black, .4);
+    }
+    p {
+      width: 60%;
+      margin: 2em auto;
+      line-height: 1.4;
+      color: rgba(white, .8);
+      text-shadow: 0 1px 1px rgba(black, .3);
+    }
+    .btnBig {
+      display: inline-block;
+      padding: 1.6em 2.4em;
+      background: #4bdb7a;
+      @include background(linear-gradient(top, #4bdb7a, #37c967));
+      text-transform: uppercase;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 40px;
+      @include box-shadow(inset 0 1px 0 rgba(white, .3), 0 0 0 4px rgba(black, .1));
+
+      @include MQ(XL) {
+        &:hover {
+          @include background(linear-gradient(top, lighten(#4bdb7a, 10%), #37c967));
+        }
+      }
+    }
+    .signup {
+      margin: 1em auto 0;
+      a {
+        color: white;
+        font-size: .8125em;
+        @include MQ(XL) {
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  @include MQ(L) {
+    background-image: image-url('bg_img_l.jpg');
+    height: 400px;
+    .taglineMessage {
+      h1 {
+        font-size: 3em;
+      }
+      p {
+        margin: 1em auto;
+      }
+    }
+  }
+
+  @include MQ(S) {
+    .taglineMessage {
+      h1 {
+        font-size: 2.6em;
+      }
+      p {
+        font-size: .8125em;
+        width: 80%;
+      }
+    }
+  }
+
+  @include MQ(XS) {
+    background-image: image-url('bg_img_xs.jpg');
+    .taglineMessage {
+      p {
+        width: 100%;
+      }
+      .btnBig {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,7 +1,12 @@
+@import "variables_and_such.css.scss";
 .timeline {
   list-style: none;
-  padding: 20px 0 20px;
+  padding: 20px 1em 20px;
   position: relative;
+  background: #c3e3e4;
+  width: 70%;
+  margin: 0 auto;
+
   &:before {
     top: 0;
     bottom: 0;
@@ -13,7 +18,7 @@
     margin-left: -1.5px;
   }
   > li {
-    margin-bottom: 20px;
+   // margin-bottom: -170px;
     position: relative;
     &:before {
       content: " ";
@@ -35,7 +40,7 @@
     }
     > {
       .timeline-panel {
-        width: 46%;
+        width: 40%;
         float: left;
         border: 1px solid #d4d4d4;
         border-radius: 2px;
@@ -43,14 +48,21 @@
         position: relative;
         -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        height: auto;
+        border-radius: 0px;
+        box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+        column-break-inside: avoid;
+        padding: 21px;
+        background: linear-gradient(45deg, white, #f9f9f9);
+
         &:before {
           position: absolute;
           top: 26px;
           right: -15px;
           display: inline-block;
           border-top: 15px solid transparent;
-          border-left: 15px solid #ccc;
-          border-right: 0 solid #ccc;
+          border-left: 15px solid #f9f9f9;
+          border-right: 0 solid #f9f9f9;
           border-bottom: 15px solid transparent;
           content: " ";
         }
@@ -60,14 +72,13 @@
           right: -14px;
           display: inline-block;
           border-top: 14px solid transparent;
-          border-left: 14px solid #fff;
-          border-right: 0 solid #fff;
+          border-left: 14px solid #f9f9f9;
+          border-right: 0 solid #f9f9f9;
           border-bottom: 14px solid transparent;
           content: " ";
         }
       }
       .timeline-badge {
-        color: #fff;
         width: 50px;
         height: 50px;
         line-height: 50px;
@@ -76,13 +87,21 @@
         position: absolute;
         top: 16px;
         left: 50%;
-        margin-left: -25px;
-        background-color: #999999;
+        margin-left: -23px;
         z-index: 100;
-        border-top-right-radius: 50%;
-        border-top-left-radius: 50%;
-        border-bottom-right-radius: 50%;
-        border-bottom-left-radius: 50%;
+
+        .timeago{
+          line-height: 1;
+          font-size: 12px;
+        }
+
+        .fa{
+          color: $purp;
+
+          &:hover{
+            color: $hover;
+          }
+        }
       }
     }
     &.timeline-inverted > .timeline-panel {

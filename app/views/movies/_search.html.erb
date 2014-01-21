@@ -1,8 +1,8 @@
 <div id="searchly" class="container">
   <%= form_tag "/search", :method => "GET", :action => "search", :method => "post", :class => "form-inline" do %>
       <div class="form-group">
-        <%= text_field_tag :query, params[:query], :required => true, :placeholder => "Search", :class => "form-control input-hg block" %>
+        <%= text_field_tag :query, params[:query], :required => true, :placeholder => "Search", :class => "form-control input-hg block", :id => "main-search" %>
       </div>
-      <%= submit_tag "Go!", :class => "btn bttn-block btn-hg btn-primary" %>
+      <%= submit_tag "Go!", :class => "btn bttn-block btn-hg btn-primary" , :id => "go-button" %>
   <% end %>
 </div>

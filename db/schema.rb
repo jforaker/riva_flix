@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115001347) do
+ActiveRecord::Schema.define(version: 20140121004934) do
 
   create_table "follows", force: true do |t|
     t.string   "follower_type"
@@ -62,12 +62,14 @@ ActiveRecord::Schema.define(version: 20140115001347) do
     t.text     "description"
     t.integer  "movie_id"
     t.string   "poster"
-    t.integer  "critics_score",  limit: 255
-    t.integer  "audience_score", limit: 255
+    t.integer  "critics_score",   limit: 255
+    t.integer  "audience_score",  limit: 255
     t.string   "movie_reviews"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "from_watcher"
+    t.integer  "from_watcher_id"
   end
 
 end

@@ -1,0 +1,66 @@
+/*
+ * Naver v3.0.3 - 2014-01-20
+ * A jQuery plugin for responsive navigation. Part of the Formstone Library.
+ * http://formstone.it/naver/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
+
+@import "variables_and_such.css.scss";
+
+
+.naver {
+  width: 107% !important;
+
+  .naver-handle {
+    color: $lightgray;
+    cursor: pointer;
+    display: none;
+    font-size: 14px;
+    height: 30px;
+    line-height: 28px;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    position: relative;
+    left: 12px;
+
+
+
+    &:before {
+      //background: url(jquery.fs.naver-icon.png) no-repeat center;
+      content: "\f0c9";
+      font-family: 'fontawesome';
+      display: block;
+      float: left;
+      margin: 1px 10px 0 0;
+      width: 20px;
+      font-size: 25px;
+    }
+  }
+  .naver-wrapper {
+    background: $purp;
+    width: 107% !important;
+    height: 54px;
+  }
+  .naver-container:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+  }
+  &.enabled {
+    .naver-handle {
+      display: block;
+    }
+    .naver-wrapper {
+      height: 0px;
+      overflow: hidden;
+    }
+  }
+}

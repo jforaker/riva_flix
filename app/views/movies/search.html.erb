@@ -1,11 +1,16 @@
 
 <!--search RESULTS   ------------------->
 
-<div class="jumbotron" >
+<div class="jumbotron jumbo-details" >
+  <div class="icons-holder">
+    <span id="collapse"><i class="closer fa fa-times-circle"></i></span>
+    <span id="volumer"><i class="tubular-mute fa fa-volume-up"></i></span>
+  </div>
   <% @results.each do |movie| %>
 
-      <div class="container">
-        <a href="/movies/<%= movie.id %>"> <img id="movie-poster" src="<%= movie.posters.profile %>"></a>
+      <div class="container" id="accordian">
+
+        <a href="/movies/<%= movie.id %>"> <img class="movie-poster"  src="<%= movie.posters.profile %>"></a>
         <a href="/movies/<%= movie.id %>"> <h3 id="movie-name"> <%= movie.name %> </h3></a>
         <%= button_to "add to watch list", {:controller => :watches,
                                             :action => 'create',
@@ -33,9 +38,9 @@
         </blockquote>
 
         <%= render 'youtube_results' %>
+        <%= render 'similar_results' %>
 
       </div>
   <% end %>
 </div>
 
-<%= render 'similar_results' %>

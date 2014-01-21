@@ -3,7 +3,6 @@ docReady( function() {
 
 //youtube
 
-    setTimeout(function() {
         if( $('body').hasClass('show movies') || $('body').hasClass('search movies')){
 
             $('#collapse').click(function(){
@@ -61,7 +60,6 @@ docReady( function() {
         } else {
             console.log("noooo");
         }
-    }, 0);
 
 
 
@@ -97,8 +95,7 @@ docReady( function() {
 
 
 
-    $('ul.timeline').children('li').each(function(index)
-    {
+    $('ul.timeline').children('li').each(function(index) {
         $(this).addClass(index % 2 ? 'timeline-inverted' : 'regular');
         console.log(this);
         $('.regular').find('.item').css({
@@ -120,6 +117,9 @@ docReady( function() {
 //    },500);
 
     $('#alerter').animate({'opacity': 1}, 500);
+    setTimeout(function(){
+        $('#alerter').animate({'opacity': 0}, 500);
+    }, 1000)
 
 
 });

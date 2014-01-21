@@ -1,7 +1,6 @@
 @import "variables_and_such";
 
 #tubular-container, #tubular-shield{
-  //height: 92% !important;
   top: 80px !important;
 }
 
@@ -35,7 +34,7 @@
   font-size: 1.7em;
   position: absolute;
   right: -9px;
-  top: 115px;
+  margin-top: 73px;
 }
 .jumbo-details{
   //background: none !important;
@@ -45,10 +44,22 @@
   position: relative;
   top: 0;
 
+  P{
+    color: $gray !important;
+  }
+
+  #movie-name{
+    color: $gray !important;
+    display: inline-block
+  }
+
+
+
   &.upTop{
+    padding: 0px !important;
     -webkit-transition: all .3s linear;
     transition: all .3s linear;
-    top: -229px;
+    //top: -229px;
   }
 }
 #movie-name{

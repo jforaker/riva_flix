@@ -1,7 +1,6 @@
 class WatchesController < ApplicationController
   def index
-    @watches = current_user.watches
-   # @likes = current_user.watches.likes
+    @watches = current_user.watches.order('updated_at DESC')
   end
 
   def create
@@ -15,7 +14,7 @@ class WatchesController < ApplicationController
       params[:audience_score] = @movie.audience_score
       params[:user_id] =  current_user.id
       current_user.like!(@movie)
-      new_watch_movie = params.permit(:user_id, :movie_id, :description, :title, :poster, :critics_score, :audience_score)
+      new_watch_movie = params.permit(:user_id, :movie_id, :description, :title, :poster, :critics_score, :audience_score, :from_watcher, :from_watcher_id)
       save new_watch_movie
 
     else
@@ -28,12 +27,9 @@ class WatchesController < ApplicationController
   end
 
   def save pars
-    #@watch = Watch.new(pars)
     @watch = current_user.watches.build(pars)
-
     if @watch.save
-
-      redirect_to watches_path, :notice => "Watch created!"
+      redirect_to watches_path, :notice => "Watch created #{ !@watch.from_watcher.nil? ? "from " + @watch.from_watcher : ''}"
     else
       render :new
     end
@@ -42,9 +38,11 @@ class WatchesController < ApplicationController
   def destroy
     @watch = Watch.find(params[:id])
     @watch.destroy
-
-    redirect_to watches_path,
-                :alert => "Would you watch #{@watch.title} again? Yes / No "
+    respond_to do |format|
+      format.js    #renders destroy.js.erb
+      format.html {render watches_path,
+                          :alert => "Seen #{@watch.title}"}
+    end
   end
 
   def like
