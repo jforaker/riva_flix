@@ -37,10 +37,11 @@ class WatchesController < ApplicationController
 
   def destroy
     @watch = Watch.find(params[:id])
+    @likeable = @watch
     @watch.destroy
     respond_to do |format|
       format.js    #renders destroy.js.erb
-      format.html {render watches_path,
+      format.html {redirect_to watches_path,
                           :alert => "Seen #{@watch.title}"}
     end
   end
