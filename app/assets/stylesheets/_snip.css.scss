@@ -95,6 +95,21 @@
           font-size: 12px;
         }
 
+        .buttoner{
+          color: $purp;
+          &:before{
+            content: "\f14a";
+            font-family: 'fontawesome';
+            font-size: 32px;
+            padding-right: 6px;
+
+          }
+          &:hover{
+            color: $hover;
+          }
+
+        }
+
         .fa{
           color: $purp;
 

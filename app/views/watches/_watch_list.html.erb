@@ -6,10 +6,10 @@
   <% @watches.each do |item| %>
       <li>
         <div class="timeline-badge simptip-position-top simptip-movable"  data-tooltip="click to mark as watched">
-          <%= button_to({:controller => :watches, :action => 'destroy', :id => item.id}, :remote => true, method: 'delete', :class => "buttoner", 'data-toggle' => 'modal', 'data-target' => "#ajax-modal") do %>
-              <i class="fa fa-check-square"> </i>
-          <% end %>
+          <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id}, :remote => true, method: 'delete', :class => "buttoner checker", 'data-toggle' => 'modal', 'data-target' => "#ajax-modal"  %>
 
+
+          <!--<i class="fa fa-check-square"> </i>-->
           <div class="timeago">added <%= time_ago_in_words(item.created_at) %> ago</div>
         </div>
         <div class="timeline-panel">
@@ -32,7 +32,7 @@
               <div class="tagsinput">
                 <span class="tag">
                     <span style="position: relative; right: 4px;">Seen it!</span>
-                  <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :remote => true, :method => :delete, :class => "tagsinput-remove-link", 'data-toggle' => 'modal', 'data-target' => "#ajax-modal" %>
+                  <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :remote => false, :method => :delete, :class => "tagsinput-remove-link" %>
                 </span>
                 <span class="liker tag">
                   <%= render 'like_form', likeable: item %>
