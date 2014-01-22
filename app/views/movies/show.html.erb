@@ -17,8 +17,8 @@
             <% if @likes.count == 1 %>
                 <a class="simptip-position-top" data-tooltip="<%= @likes.first.name %>"> person </a> would watch again
             <% else %>
-                <a class="simptip-position-top" data-tooltip="<%= @likes.each do |liker| %>
-                    <%= liker.name %>
+                <a class="simptip-position-top" data-tooltip="<% @likes.each do |liker| %>
+                    <%= liker.name %>,
                     <% end %>">
                   people </a> would watch again
             <% end %>
