@@ -4,7 +4,7 @@
 <p>Followed by <%= @user.followers(User).count %> people</p>
 <% @user.followers(User).each do |follower| %>
     <%= link_to follower.name, follower %>
-    <p><img src="<%= follower.image %>"></p>
+<p><img style="display:inline-block" src="<%= follower.image %>"></p>
 <% end %>
 
 <h3><%= @user.name %>'s Watch List: </h3>
