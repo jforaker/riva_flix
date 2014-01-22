@@ -22,7 +22,7 @@
                   <p>Borrowed from: <%= link_to item.from_watcher, user_path(item.from_watcher_id) %></p>
               <% end %>
 
-              <% if current_user != @user %>
+              <% if current_user == @user %>
 
                   <div class="tagsinput" style="border: none; background: none;">
                     <span class="tag">
