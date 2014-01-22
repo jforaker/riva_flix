@@ -13,16 +13,9 @@
               Audience: <%= item.audience_score %></p>
 
 
+            <% if current_user == @user %>
 
-            <!-------------- TODO --  remove ! ------------------------------>
-
-
-
-
-
-            <% if current_user != @user %>
-
-                <div class="tagsinput" style="border: none; background: none">
+                <div class="tagsinput" style="border: none; background: none;">
                     <span class="tag">
                         <span style="position: relative; right: 2px;">Seen it!</span>
                       <%= link_to "", {:controller => :watches, :action => 'destroy', :id => item.id }, :method => :delete, :class => "tagsinput-remove-link" %>

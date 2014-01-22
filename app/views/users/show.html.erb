@@ -1,6 +1,14 @@
 <h3><%= @user.name %></h3>
 <%= render 'follow_form' , user: @user%>
 
+<p>Following <%= @user.followees(User).count %> people</p>
+<% @user.followees(User).each do |followee| %>
+    <%= link_to followee.name, followee %>
+    <p><img src="<%= followee.image %>"></p>
+<% end %>
+
+
+
 <p>Followed by <%= @user.followers(User).count %> people</p>
 <% @user.followers(User).each do |follower| %>
     <%= link_to follower.name, follower %>
