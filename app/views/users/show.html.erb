@@ -1,7 +1,11 @@
 <h3><%= @user.name %></h3>
 <%= render 'follow_form' , user: @user%>
 
-<p>Following <%= @user.followees(User).count %> people</p>
+<p>Following <%= @user.followees(User).count %>
+  <% if @user.followees(User).count == 1 %> person
+      <% else %> people
+      <% end %>
+</p>
 
 <div class="row">
   <ul class="ds-btn follow-list">
@@ -21,7 +25,11 @@
 
 <br>
 
-<p>Followed by <%= @user.followers(User).count %> people</p>
+<p>Followed by <%= @user.followers(User).count %>
+  <% if @user.followers(User).count == 1 %> person
+  <% else %> people
+  <% end %>
+</p>
 
 <div class="row">
   <ul class="ds-btn follow-list">
