@@ -2,19 +2,46 @@
 <%= render 'follow_form' , user: @user%>
 
 <p>Following <%= @user.followees(User).count %> people</p>
-<% @user.followees(User).each do |followee| %>
-    <%= link_to followee.name, followee %>
-    <p><img style="display:inline-block" src="<%= followee.image %>"></p>
-<% end %>
 
+<div class="row">
+  <ul class="ds-btn follow-list">
+    <% @user.followees(User).each do |followee| %>
+        <li>
+          <div class="btn person" href="<%= followee.id %>">
+            <img style="display:inline-block" src="<%= followee.image %>">
+              <span>
+                <br>
+                <%= link_to followee.name, followee %>
+              </span>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</div>
 
+<br>
 
 <p>Followed by <%= @user.followers(User).count %> people</p>
-<% @user.followers(User).each do |follower| %>
-    <%= link_to follower.name, follower %>
-    <p><img style="display:inline-block"  src="<%= follower.image %>"></p>
-<% end %>
+
+<div class="row">
+  <ul class="ds-btn follow-list">
+    <% @user.followers(User).each do |follower| %>
+        <li>
+          <div class="btn person" href="<%= follower.id %>">
+            <img style="display:inline-block" src="<%= follower.image %>">
+              <span>
+                <br>
+                <%= link_to follower.name, follower %>
+              </span>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</div>
+
 
 <h3><%= @user.name %>'s Watch List: </h3>
 
-<%= render 'user_watch_list' %> 
+<div class="row">
+  <%= render 'user_watch_list' %>
+</div>
