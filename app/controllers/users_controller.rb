@@ -10,6 +10,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to root_path, :notice => "Thanks for trying out RivaFlix"
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])

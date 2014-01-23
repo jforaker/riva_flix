@@ -27,3 +27,11 @@
     }
   }
 }
+
+a.destroy{
+  color: $warning;
+
+  &:hover{
+    color: darken($warning, 20%);
+  }
+}

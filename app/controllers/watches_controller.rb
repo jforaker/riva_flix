@@ -29,7 +29,7 @@ class WatchesController < ApplicationController
   def save pars
     @watch = current_user.watches.build(pars)
     if @watch.save
-      redirect_to watches_path, :notice => "Watch created #{ !@watch.from_watcher.nil? ? "from " + @watch.from_watcher : ''}"
+      redirect_to watches_path, :notice => "#{@watch.title} added to your Watch List #{ !@watch.from_watcher.nil? ? "from " + @watch.from_watcher : ''}"
     else
       render :new
     end

@@ -1,6 +1,6 @@
 RivaFlix::Application.routes.draw do
   root :to => "movies#index"
-  resources :users, :only => [:index, :show, :edit, :update ]
+  resources :users
 
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
