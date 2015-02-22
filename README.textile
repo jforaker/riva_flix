@@ -1,3 +1,3 @@
-h1. Riva Flix
+h1. Riva Flix 
 
 h2. http://rivaflix.herokuapp.com/
